@@ -17,6 +17,7 @@
 #include "synchdisk.h"
 #include "post.h"
 #include "synchconsole.h"
+#include <stdio.h>
 
 //----------------------------------------------------------------------
 // Kernel::Kernel
@@ -250,21 +251,25 @@ Kernel::NetworkTest() {
 
 void ForkExecute(Thread *t)
 {
+    
 	if ( !t->space->Load(t->getName()) ) {
     	return;             // executable not found
     }
-	
+    
     t->space->Execute(t->getName());
-
+    
 }
 
 void Kernel::ExecAll()
 {
+    // Initialize the memory.
+    bzero(machine->mainMemory, MemorySize);
+    
+    // Start to Exec files.
 	for (int i=1;i<=execfileNum;i++) {
 		int a = Exec(execfile[i]);
 	}
 	currentThread->Finish();
-    //Kernel::Exec();	
 }
 
 
@@ -274,7 +279,7 @@ int Kernel::Exec(char* name)
 	t[threadNum]->space = new AddrSpace();
 	t[threadNum]->Fork((VoidFunctionPtr) &ForkExecute, (void *)t[threadNum]);
 	threadNum++;
-
+        
 	return threadNum-1;
 /*
     cout << "Total threads number is " << execfileNum << endl;

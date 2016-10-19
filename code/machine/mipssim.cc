@@ -21,6 +21,7 @@
 #include "machine.h"
 #include "mipssim.h"
 #include "main.h"
+#include <stdio.h>
 
 static void Mult(int a, int b, bool signedArith, int* hiPtr, int* loPtr);
 
