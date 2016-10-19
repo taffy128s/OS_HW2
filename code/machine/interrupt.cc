@@ -166,6 +166,8 @@ Interrupt::OneTick()
 				// interrupts disabled)
     CheckIfDue(FALSE);		// check for pending interrupts
     ChangeLevel(IntOff, IntOn);	// re-enable interrupts
+    
+    // Important!! It seems like the timer would fire an interrupt...
     if (yieldOnReturn) {	// if the timer device handler asked 
     				// for a context switch, ok to do it now
 	yieldOnReturn = FALSE;

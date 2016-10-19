@@ -4,10 +4,10 @@ int
 main()
 {
 	int n;
-	for (n=15;n<=19;n++){
+	for (n=-2;n<=3;n++){
         
 		PrintInt(n);
         }
-    Exit(0);
+    Exit(2);
 }
 

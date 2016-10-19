@@ -4,9 +4,9 @@ int
 main()
 {
 	int n;
-	for (n=11;n>=-2;n--) {
+	for (n=150;n>=-2;n--) {
 		PrintInt(n);
 	}
-    Exit(0);
+    Exit(1);
 }
 
